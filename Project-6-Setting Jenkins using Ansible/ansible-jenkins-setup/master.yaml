@@ -1,0 +1,6 @@
+- name: Setup Jenkins Master
+  hosts: jenkins_master
+  become: yes
+  roles:
+    - common
+    - jenkins_master

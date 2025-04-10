@@ -1,0 +1,15 @@
+- name: Install Java
+  apt:
+    name: openjdk-11-jdk
+    state: present
+
+- name: Create Jenkins user
+  user:
+    name: jenkins
+    state: present
+    shell: /bin/bash
+
+- name: Add master’s public key to authorized_keys
+  authorized_key:
+    user: jenkins
+    key: "{{ lookup('file', 'jenkins_master_id_rsa.pub') }}"
